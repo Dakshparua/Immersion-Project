@@ -126,7 +126,7 @@ export const getUser = async (req, res) => {
         success: false,
       });
     }
-    (user.fullname = fullname),
+      (user.fullname = fullname),
       (user.email = email),
       (user.phoneNumber = phoneNumber),
       (user.profile.bio = bio),

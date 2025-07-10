@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import connectDB from "./utils/db.js";
 import userRoutes from "./routes/user.route.js";
 
-dotenv.config({});
+dotenv.config();
 
 const app = express();
 
@@ -25,7 +25,6 @@ const PORT = process.env.PORT||3000;
 
 //api
 app.use("/api/v1/user", userRoutes);
-"http://localhost:3000/"
 
 
 app.listen(PORT, () => {
