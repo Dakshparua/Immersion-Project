@@ -39,6 +39,11 @@ export const getCompanies = async (req, res) => {
                 success: false,
             })
         }
+        return res.status(200).json({
+            message: "Companies found",
+            success: true,
+            companies
+        });
     } catch (error) {
         console.log(error);
     }    
