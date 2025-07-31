@@ -1,3 +1,4 @@
+import { Job } from "../models/job.model.js";
 export const postJob = async (req, res) => {
     try{
         const{title, description, requirements,salary, location, jobtype,experirnce, position,companyId } = req.body;
@@ -70,6 +71,25 @@ export const getJobById = async (req, res) => {
             message: "Job found",
             success: true,
             job
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const getAdminJobs = async (req, res) => {
+    try{
+        const adminId = req.id;
+        const jobs = await Job.find({ created_by: adminId }).populate('company', 'name');
+        if(!jobs){
+            return res.status(404).json({
+                message: "No jobs found",
+                success: false,
+            })
+        }
+        return res.status(200).json({
+            message: "Jobs found",
+            success: true,
+            jobs
         });
     } catch (error) {
         console.log(error);
